@@ -34,4 +34,4 @@ def login():
 
 if __name__ == '__main__':
     app.debug = True  # 开启调试模式
-    app.run()
+    app.run(host='0.0.0.0')  # 添加host,所有人都可以访问
