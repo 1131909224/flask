@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>欢迎, {{ username }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <p>Welcome, {{ username }}</p>
-    <a href="/">退出</a>
+    <p class="pUser">Welcome, {{ username }}<a href="/">&times;退出</a></p>
+    <img src="{{ url_for('static', filename='image/sublime_text.jpg') }} ">
 </body>
 </html>
