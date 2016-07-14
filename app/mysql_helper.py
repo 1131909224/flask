@@ -29,7 +29,7 @@ def close_connection(conn):
 
 def select_username_password(username):
     """
-    根据factory_id修改厂家信息
+    根据username查询密码
     :param username:
     :return:
     """
