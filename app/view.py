@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 from flask import Flask, request, render_template
 
+from app.mysql_helper import select_username_password
+
 app = Flask(__name__)
 
 
@@ -23,7 +25,8 @@ def hello():
 def login():
     username = request.form['username']
     password = request.form['password']
-    if username == 'admin' and password == 'password':
+    items = select_username_password(username)
+    if password == items['password']:
         return render_template('index.html', username=username)
     else:
         return render_template('form.html', message="用户密码不匹配", username=username)
