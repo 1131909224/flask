@@ -25,12 +25,16 @@ def hello():
 def login():
     username = request.form['username']
     password = request.form['password']
+    if not username or not password:
+        return render_template('form.html', message="用户密码不能为空", username=username)
     items = select_username_password(username)
-    if password == items['password']:
-        return render_template('index.html', username=username)
+    if items:
+        if password == items['password']:
+            return render_template('index.html', username=username)
+        else:
+            return render_template('form.html', message="用户密码不匹配", username=username)
     else:
-        return render_template('form.html', message="用户密码不匹配", username=username)
-
+        return render_template('form.html', message="账号不存在", username=username)
 
 if __name__ == '__main__':
     app.debug = True  # 开启调试模式
